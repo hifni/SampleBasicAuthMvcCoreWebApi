@@ -10,6 +10,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
+using SampleBasicAuthMvcCoreWebApi.Middleware.Authentication;
 
 namespace SampleBasicAuthMvcCoreWebApi
 {
@@ -43,6 +44,7 @@ namespace SampleBasicAuthMvcCoreWebApi
                 app.UseHsts();
             }
 
+            app.UseMiddleware<BasicAuthMiddleware>("auth.me");
             app.UseHttpsRedirection();
             app.UseMvc();
         }
